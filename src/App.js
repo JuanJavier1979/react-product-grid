@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from './components/header';
 import Footer from './components/footer';
-import ProductCard from './components/productCard';
+import ProductList from './components/productList';
+
+import products from './data/products'
 
 import 'bulma/sass/utilities/initial-variables.sass';
 import 'bulma/bulma.sass';
-import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 import './App.css';
 
 import searchIcon from "./images/search-solid.svg";
@@ -16,78 +17,32 @@ class App extends React.Component {
   constructor(){
     super();
     this.state ={
-      products: [
-        {
-          "key": 1,
-          "image": "00345-058",
-          "name": "Jersey básico cuello cisne niña rosa",
-          "price": "21,99",
-          "discounted": "18,00",
-          "percentage": "-20",
-        },
-        {
-          "key": 2,
-          "image": "00345-060",
-          "name": "Jersey básico cuello cisne niña amarillo",
-          "price": "21,99",
-          "discounted": "18,00",
-          "percentage": "-20",
-        },
-        {
-          "key": 3,
-          "image": "00345-062",
-          "name": "Jersey básico cuello cisne niña fucsia",
-          "price": "21,99",
-          "discounted": "18,00",
-          "percentage": "-20",
-        },
-        {
-          "key": 4,
-          "image": "00345-063",
-          "name": "Jersey básico cuello cisne niña negro",
-          "price": "21,99",
-          "discounted": "18,00",
-          "percentage": "-20",
-        },
-        {
-          "key": 5,
-          "image": "07302-034",
-          "name": "Jersey motivos calados niña gris",
-          "price": "33,99",
-        },
-        {
-          "key": 6,
-          "image": "07302-035",
-          "name": "Jersey motivos calados niña negro",
-          "price": "33,99",
-        },
-        {
-          "key": 7,
-          "image": "07304-088",
-          "name": "Jersey cuello semicisne trenzas niña rojo",
-          "price": "29,99",
-        },
-        {
-          "key": 8,
-          "image": "07304-089",
-          "name": "Jersey cuello semicisne trenzas niña negro",
-          "price": "29,99",
-        }
-      ],
-      input: '',
+      products: [],
+      filteredProducts: [],
     }
   }
 
-  onChangeHandler(e){
-    console.log(e.target.value);
+  componentWillMount() {
     this.setState({
-      input: e.target.value,
+      products,
+      filteredProducts: products
+    })
+  }
+
+  onChangeHandler(e){
+    let filteredProducts = this.state.products;
+
+    filteredProducts = filteredProducts.filter((product) => {
+      let productName = product.name.toLowerCase()
+      return productName.indexOf( e.target.value.toLowerCase() ) !== -1
+    })
+
+    this.setState({
+      filteredProducts
     })
   }
 
   render() {
-    const { products } = this.state;
-
     return (
       <div className="App">
         <Header />
@@ -111,11 +66,7 @@ class App extends React.Component {
               <img src={removeIcon} alt="" className="remove" />
             </div>
           </section>
-          <section className="columns is-multiline">
-            {products.map(product =>
-              <ProductCard key={product.key} imageURL={product.image} productName={product.name} price={product.price} discountedPrice={product.discounted} discountPercentage={product.percentage} />
-            )}
-          </section>
+          <ProductList list={this.state.filteredProducts} />
         </main>
         <Footer />
       </div>

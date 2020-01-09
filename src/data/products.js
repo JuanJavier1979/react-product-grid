@@ -1,0 +1,88 @@
+const products = [
+  {
+    "key": 1,
+    "image": "00345-058",
+    "name": "Jersey básico cuello cisne niña rosa",
+    "price": "21,99",
+    "discounted": "18,00",
+    "percentage": "-20",
+  },
+  {
+    "key": 2,
+    "image": "00345-060",
+    "name": "Jersey básico cuello cisne niña amarillo",
+    "price": "21,99",
+    "discounted": "18,00",
+    "percentage": "-20",
+  },
+  {
+    "key": 3,
+    "image": "00345-062",
+    "name": "Jersey básico cuello cisne niña fucsia",
+    "price": "21,99",
+    "discounted": "18,00",
+    "percentage": "-20",
+  },
+  {
+    "key": 4,
+    "image": "00345-063",
+    "name": "Jersey básico cuello cisne niña negro",
+    "price": "21,99",
+    "discounted": "18,00",
+    "percentage": "-20",
+  },
+  {
+    "key": 5,
+    "image": "07302-034",
+    "name": "Jersey motivos calados niña gris",
+    "price": "33,99",
+  },
+  {
+    "key": 6,
+    "image": "07302-035",
+    "name": "Jersey motivos calados niña negro",
+    "price": "33,99",
+  },
+  {
+    "key": 7,
+    "image": "07304-088",
+    "name": "Jersey cuello semicisne trenzas niña rojo",
+    "price": "29,99",
+  },
+  {
+    "key": 8,
+    "image": "07304-089",
+    "name": "Jersey cuello semicisne trenzas niña negro",
+    "price": "29,99",
+  },
+  {
+    "key": 9,
+    "image": "00842-049",
+    "name": "Camiseta básica manga larga logotipo niño",
+    "price": "11,99",
+    "discounted": "8,00",
+    "percentage": "-33",
+  },
+  {
+    "key": 10,
+    "image": "10677-037",
+    "name": "Set calcetines lisos niño",
+    "price": "7,99",
+  },
+  {
+    "key": 11,
+    "image": "10690-071",
+    "name": "Bufanda cuadros niño",
+    "price": "12,99",
+    "discounted": "6,49",
+    "percentage": "-50",
+  },
+  {
+    "key": 12,
+    "image": "00842-047",
+    "name": "Camiseta básica manga larga logotipo niño",
+    "price": "11,99",
+  },
+]
+
+export default products
