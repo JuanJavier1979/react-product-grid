@@ -1,3 +1,6 @@
+/**************************************************
+ * Main elements
+ *************************************************/
 .App main {
   margin-bottom: 32px;
 }
@@ -7,28 +10,84 @@
     padding-left: 24px;
   }
 }
+
+/**************************************************
+ * Filters section
+ *************************************************/
 .App .control .icon {
   opacity: .5;
   padding: 10px;
 }
-.App .actions img {
-  width: 25px;
-  height: 25px;
+.App section.filters {
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+}
+@media screen and (min-width: 768px) {
+  .App section.filters {
+    padding-bottom: 15px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .App section.filters {
+    padding-bottom: 0;
+  }
+}
+.App .actions button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
   margin-left: 10px;
+  border: none;
+  background: transparent;
+  opacity: .6;
+  cursor: pointer;
 }
-.visuallyhidden { 
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
+.App .actions button:hover,
+.App .actions button:focus {
+  opacity: 1;
 }
-.hide {
-  display: none;
+.App .actions img {
+  width: 100%;
+  height: 100%;
 }
 
+@media screen and (max-width: 1024px) {
+  .App .filters {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ddd;
+  }
+  .App .filters .actions {
+    order: 0;
+  }
+  .App .filters .search {
+    order: 1;
+    width: 100%;
+  }
+}
+
+/**************************************************
+ * Product Grid section
+ *************************************************/
+@media screen and (max-width: 767px) {
+  .App section.columns {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .App section.columns {
+    overflow-x: scroll;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .App section.columns {
+    flex-wrap: wrap;
+  }
+}
+
+/**************************************************
+ * Product Cards
+ *************************************************/
 .App .card {
   border: 1px solid rgba(50, 152, 220, .6);
   border-radius: 5px;
@@ -71,4 +130,30 @@
   border: none;
   max-width: 100px;
   margin: 0 auto;
+}
+
+/**************************************************
+ * Helpers
+ *************************************************/
+.visuallyhidden { 
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+.hide {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .is-centered-tablet {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .hidden-tablet-only {
+    display: none !important;
+  }
 }
