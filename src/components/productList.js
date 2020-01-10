@@ -3,9 +3,17 @@ import ProductCard from './productCard';
 
 const ProductList = ( props ) => {
   return (
-    <section className="columns is-multiline">
+    <section className={`columns ${props.device}`}>
       {props.list.map(product =>
-        <ProductCard key={product.key} imageURL={product.image} productName={product.name} price={product.price} discountedPrice={product.discounted} discountPercentage={product.percentage} />
+        <ProductCard 
+          key={product.key}
+          columnsMobile={props.columnsMobile} 
+          columnsDesktop={props.columnsDesktop}
+          imageURL={product.image}
+          productName={product.name}
+          price={product.price}
+          discountedPrice={product.discounted}
+          discountPercentage={product.percentage} />
       )}
     </section>
   )

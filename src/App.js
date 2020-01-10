@@ -19,9 +19,15 @@ class App extends React.Component {
     this.state ={
       products: [],
       filteredProducts: [],
+      width: 0,
+      device: 'desktop',
+      desktopClass: 'is-one-fifth-desktop',
+      mobileClass: 'is-full-mobile',
     }
+    this.updateWinDimension = this.updateWinDimension.bind(this);
   }
 
+  // Add default products before render
   componentWillMount() {
     this.setState({
       products,
@@ -29,6 +35,31 @@ class App extends React.Component {
     })
   }
 
+  // Check window dimensions
+  componentDidMount() {
+    this.updateWinDimension();
+    window.addEventListener('resize', this.updateWinDimension);
+  }
+
+  // Check window dimensions
+  componentWillUnmount() {
+    this.updateWinDimension();
+    window.removeEventListener('resize', this.updateWinDimension);
+  }
+
+  // Update window dimensions to state
+  updateWinDimension() {
+    this.setState({ width: window.innerWidth });
+    if( window.innerWidth > 1023 ) {
+      this.setState({ device: 'is-desktop' });
+    } else if ( window.innerWidth > 767 ) {
+      this.setState({ device: 'is-tablet' });
+    } else {
+      this.setState({ device: 'is-mobile' });
+    }
+  }
+
+  // Control Search Filtering Input Field
   onChangeHandler(e){
     let filteredProducts = this.state.products;
 
@@ -42,13 +73,30 @@ class App extends React.Component {
     })
   }
 
+  // Control layout change button
+  setLayoutMaxHandler(e){
+    this.setState({
+      desktopClass: 'is-one-fifth-tablet is-one-fifth-desktop',
+      mobileClass: 'is-full-mobile'
+    })
+  }
+
+  setLayoutMinHandler(e){
+    //console.log(this.state.device);
+    this.setState({
+      desktopClass: 'is-one-fifth-tablet is-one-third-desktop',
+      mobileClass: 'is-half-mobile'
+    })
+  }
+
   render() {
+    //console.log(this.state.device);
     return (
       <div className="App">
         <Header />
         <main className="container">
-          <section className="columns is-vcentered">
-            <div className="column is-half">
+          <section className="filters columns is-vcentered">
+            <div className="column is-half search is-centered-tablet">
               <form>
                 <div className="field">
                   <label className="label visuallyhidden">Buscar</label>
@@ -61,12 +109,12 @@ class App extends React.Component {
                 </div>
               </form>
             </div>
-            <div className="column is-half actions has-text-right">
-              <img src={addIcon} alt="" className="add" />
-              <img src={removeIcon} alt="" className="remove" />
+            <div className="column is-half actions has-text-right hidden-tablet-only">
+              <button className="add" onClick={this.setLayoutMaxHandler.bind(this)}><img src={addIcon} alt="" /></button>
+              <button className="remove" onClick={this.setLayoutMinHandler.bind(this)}><img src={removeIcon} alt="" /></button>
             </div>
           </section>
-          <ProductList list={this.state.filteredProducts} />
+          <ProductList list={this.state.filteredProducts} device={this.state.device} columnsMobile={this.state.mobileClass} columnsDesktop={this.state.desktopClass} />
         </main>
         <Footer />
       </div>
