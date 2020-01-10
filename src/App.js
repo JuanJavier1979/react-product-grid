@@ -99,19 +99,19 @@ class App extends React.Component {
             <div className="column is-half search is-centered-tablet">
               <form>
                 <div className="field">
-                  <label className="label visuallyhidden">Buscar</label>
+                  <label for="input" className="label visuallyhidden">Buscar</label>
                   <div className="control has-icons-left">
                     <span className="icon is-small is-left">
                       <img src={searchIcon} alt="" />
                     </span>
-                    <input className="input" type="text" placeholder="Buscar" onChange={this.onChangeHandler.bind(this)} />
+                    <input className="input" id="input" name="input" type="text" placeholder="Buscar" onChange={this.onChangeHandler.bind(this)} />
                   </div>
                 </div>
               </form>
             </div>
             <div className="column is-half actions has-text-right hidden-tablet-only">
-              <button className="add" onClick={this.setLayoutMaxHandler.bind(this)}><img src={addIcon} alt="" /></button>
-              <button className="remove" onClick={this.setLayoutMinHandler.bind(this)}><img src={removeIcon} alt="" /></button>
+              <button className="add" onClick={this.setLayoutMaxHandler.bind(this)} aria-label="Incrementa el número de columnas">><img src={addIcon} alt="" /></button>
+              <button className="remove" onClick={this.setLayoutMinHandler.bind(this)} aria-label="Disminuye el número de columnas">><img src={removeIcon} alt="" /></button>
             </div>
           </section>
           <ProductList list={this.state.filteredProducts} device={this.state.device} columnsMobile={this.state.mobileClass} columnsDesktop={this.state.desktopClass} />
