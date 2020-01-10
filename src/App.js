@@ -110,8 +110,8 @@ class App extends React.Component {
               </form>
             </div>
             <div className="column is-half actions has-text-right hidden-tablet-only">
-              <button className="add" onClick={this.setLayoutMaxHandler.bind(this)} aria-label="Incrementa el número de columnas">><img src={addIcon} alt="" /></button>
-              <button className="remove" onClick={this.setLayoutMinHandler.bind(this)} aria-label="Disminuye el número de columnas">><img src={removeIcon} alt="" /></button>
+              <button className="add" onClick={this.setLayoutMaxHandler.bind(this)} aria-label="Incrementa el número de columnas"><img src={addIcon} alt="" /></button>
+              <button className="remove" onClick={this.setLayoutMinHandler.bind(this)} aria-label="Disminuye el número de columnas"><img src={removeIcon} alt="" /></button>
             </div>
           </section>
           <ProductList list={this.state.filteredProducts} device={this.state.device} columnsMobile={this.state.mobileClass} columnsDesktop={this.state.desktopClass} />
